@@ -12,13 +12,12 @@ import java.util.List;
 public class ItemRepository {
     private final EntityManager em;
 
-    public Long save(Item item){
+    public void save(Item item){
         if (item.getId() == null){
             em.persist(item);
         }else{
             em.merge(item);
         }
-        return item.getId();
     }
 
     public Item findOne(Long itemId){
