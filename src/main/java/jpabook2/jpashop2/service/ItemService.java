@@ -41,7 +41,7 @@ public class ItemService {
     /**
      * 상품 전체 조회
      */
-    public List<Item> findAll(){
+    public List<Item> findItems(){
         return itemRepository.findAll();
     }
 }

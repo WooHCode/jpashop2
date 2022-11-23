@@ -40,7 +40,7 @@ class OrderServiceTest {
         Item item = createBook("첫번째책", 10000, 100);
         int orderCount = 2;
         //when
-        Long orderId = orderService.Order(member.getId(), item.getId(), orderCount);
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
 
         //then
         Order order = orderRepository.findOne(orderId);
@@ -61,7 +61,7 @@ class OrderServiceTest {
 
         //then
         assertThrows(NotEnoughStockException.class, ()->{
-            orderService.Order(member.getId(), item.getId(), orderCount);
+            orderService.order(member.getId(), item.getId(), orderCount);
         });
     }
 
@@ -71,7 +71,7 @@ class OrderServiceTest {
         Member member = createMember();
         Item book1 = createBook("book1", 10000, 10);
         int orderCount = 5;
-        Long order = orderService.Order(member.getId(), book1.getId(), orderCount);
+        Long order = orderService.order(member.getId(), book1.getId(), orderCount);
 
         //when
         orderService.cancelOrder(order);
